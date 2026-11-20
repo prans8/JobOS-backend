@@ -4,7 +4,10 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
-import fitz
+try:
+    import pymupdf as fitz  # new name (pymupdf 1.24.3+)
+except ImportError:
+    import fitz  # older installs
 import docx
 import os
 import groq
